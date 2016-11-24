@@ -1,0 +1,222 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/keysight-icon-16x16.png</param>
+        <param name="plugin-logo">images/keysight-logo-144x144.png</param>
+        <param name="plugin-banner">images/keysight-banner-560x274.png</param>
+        <param name="vendor-icon">images/keysight-icon-16x16.png</param>
+        <param name="vendor-logo">images/keysight-logo-72x72.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="html5-multimedia"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="html5-multimedia-resources" name="HTML5 Multimedia Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="html5-multimedia.css" location="/css/html5-multimedia.css"/>
+        <resource type="download" name="html5-multimedia.js" location="/js/html5-multimedia.js"/>
+        <resource type="download" name="images/" location="/images"/>
+        <resource type="download" name="templates/" location="/templates"/>
+
+        <context>html5-multimedia</context>
+        <context>atl.general</context>
+    </web-resource>
+    
+    <web-resource key="macro-browser-smart-fields" name="Macro Browser Smart Fields">
+       <resource type="download" name="attachment-dropdown-filters.js" location="js/attachment-dropdown-filters.js" />
+       <dependency>confluence.editor.actions:editor-macro-browser</dependency>
+       <context>macro-browser</context>
+    </web-resource>
+
+    <!-- publish our macros -->
+    
+    <xhtml-macro name="html5-multimedia" key="html5-multimedia" 
+                 class="com.keysight.plugins.confluence.macros.HTML5Multimedia"
+                 icon="/download/resources/${project.groupId}.${project.artifactId}:html5-multimedia-resources/images/html5-multimedia-80x80.png">
+       <category name="media"/>
+       <category name="confluence-content"/>
+       <parameters>
+	  <parameter name="page" type="confluence-content" hidden="true">
+	     <option key="includeDatePath" value="true"/>
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+	  </parameter>
+          <parameter name="name" type="attachment" required="true">
+             <alias name=""/>
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="true" />
+          </parameter>
+          <parameter name="preset" type="enum">
+             <value name="640x480 (4:3 VGA)"/>
+             <value name="800x600 (4:3 SVGA)"/>
+             <value name="1024x768 (4:3 XGA)"/>
+             <value name="1600x1200 (4:3 SXGA+)"/>
+             <value name="1280x1024 (5:4 SXGA)"/>
+             <value name="640x360 (16:9)"/>
+             <value name="960x540 (16:9 qHD)"/>
+             <value name="1280x720 (16:9 HD)"/>
+             <value name="1920x1080 (16:9 Full HD)"/>
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+          <parameter name="width"             type="int"     required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="height"            type="int"     required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="poster"            type="string"  required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="autoplay"          type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="loop"              type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="is-audio"          type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="add-download-link" type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+       </parameters>
+    </xhtml-macro>
+    
+    <xhtml-macro name="html5-video" key="html5-video" 
+                 class="com.keysight.plugins.confluence.macros.HTML5Video"
+                 icon="/download/resources/${project.groupId}.${project.artifactId}:html5-multimedia-resources/images/html5-video-80x80.png">
+       <category name="media"/>
+       <category name="confluence-content"/>
+       <parameters>
+	  <parameter name="page" type="confluence-content" hidden="true">
+	     <option key="includeDatePath" value="true"/>
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+	  </parameter>
+          <parameter name="name" type="attachment" required="true">
+             <alias name=""/>
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="true" />
+          </parameter>
+          <parameter name="preset" type="enum">
+             <value name="640x480 (4:3 VGA)"/>
+             <value name="800x600 (4:3 SVGA)"/>
+             <value name="1024x768 (4:3 XGA)"/>
+             <value name="1600x1200 (4:3 SXGA+)"/>
+             <value name="1280x1024 (5:4 SXGA)"/>
+             <value name="640x360 (16:9)"/>
+             <value name="960x540 (16:9 qHD)"/>
+             <value name="1280x720 (16:9 HD)"/>
+             <value name="1920x1080 (16:9 Full HD)"/>
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+          <parameter name="width"             type="int"     required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="height"            type="int"     required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="poster"            type="string"  required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="autoplay"          type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="loop"              type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="add-download-link" type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+       </parameters>
+    </xhtml-macro>
+    
+    <xhtml-macro name="html5-audio" key="html5-audio" 
+                 class="com.keysight.plugins.confluence.macros.HTML5Audio"
+                 icon="/download/resources/${project.groupId}.${project.artifactId}:html5-multimedia-resources/images/html5-audio-80x80.png">
+       <category name="media"/>
+       <category name="confluence-content"/>
+       <parameters>
+	  <parameter name="page" type="confluence-content" hidden="true">
+	     <option key="includeDatePath" value="true"/>
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+	  </parameter>
+          <parameter name="name" type="attachment" required="true">
+             <alias name=""/>
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="true" />
+          </parameter>
+          <parameter name="autoplay"          type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="loop"              type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="add-download-link" type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+       </parameters>
+    </xhtml-macro>
+   
+    <!-- This is an alias for the html5-video macro so that it can override the default confluence multimedia macro for drag&drop -->
+    <!-- This macro has the same parameters as the regular confluence macro -->
+    <xhtml-macro name="multimedia" key="multimedia" 
+                 class="com.keysight.plugins.confluence.macros.HTML5Multimedia"
+                 state="disabled"
+                 icon="/download/resources/${project.groupId}.${project.artifactId}:html5-multimedia-resources/images/html5-multimedia-80x80.png">
+       <category name="media"/>
+       <category name="confluence-content"/>
+       <parameters>
+	  <parameter name="page" type="confluence-content" hidden="true">
+	     <option key="includeDatePath" value="true"/>
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+	  </parameter>
+          <parameter name="name" type="attachment" required="true">
+             <alias name=""/>
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="true" />
+          </parameter>
+          <parameter name="width"     type="string"  required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="height"    type="string"  required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+	  <parameter name="autostart" type="boolean" required="false">
+             <option key="showNameInPlaceholder" value="false" />
+             <option key="showValueInPlaceholder" value="false" />
+          </parameter>
+       </parameters>
+    </xhtml-macro>
+
+
+    <!-- import from the product container -->
+    <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties" />
+    
+</atlassian-plugin>
